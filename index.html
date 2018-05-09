@@ -252,6 +252,625 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="l5ee.com/2018/05/09/Lottie到底怎么用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l5ee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="l5ee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/09/Lottie到底怎么用/" itemprop="url">用Lottie制作动画,我的月薪翻了一番!!!</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-09T23:35:21+08:00">
+                2018-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>阅读大约需要5分钟<br>可能现在很多人都知道Lottie, 这方面的文章也很多了. 但是我感觉他们几乎都是简单介绍这个开源库. 我这次就以设计师的角度,实战出发来说明如何制作Lottie文件, 这个技术的限制和一些自己踩过的坑.</p>
+<p><a href="https://www.lottiefiles.com/" target="_blank" rel="noopener">预览Lottie</a>, <a href="http://airbnb.io/lottie/" target="_blank" rel="noopener">Lottie介绍</a></p>
+</blockquote>
+<p><strong>Lottie的优势</strong></p>
+<ul>
+<li>开发无需编写动画,只需加载</li>
+<li>Android, iOS, 和React Native多平台支持</li>
+<li>Path,flat等风格动画实现完美</li>
+<li>可手动设置进度,绑定手势,事件等</li>
+<li>可网络加载,动态控制播放速度等</li>
+<li>性能好,显示效果完</li>
+<li>…</li>
+</ul>
+<p><strong>Lottie的劣势</strong></p>
+<ul>
+<li>能在AE中实现的效果非常有限</li>
+<li>对AE使用要求高一点, 动画更加依赖设计师</li>
+<li>使用位图后,资源消耗大</li>
+<li>…</li>
+</ul>
+<h2 id="了解Lottie的应用范围"><a href="#了解Lottie的应用范围" class="headerlink" title="了解Lottie的应用范围"></a>了解Lottie的应用范围</h2><blockquote>
+<p>首先我们得知道Lottie的边界在哪里,是否采用这个方案,制作的动画能不能完美实现,那么我们必须从文档开始</p>
+</blockquote>
+<ol>
+<li><p><strong>对Android和iOS的支持范围(这和我们的产品要覆盖的用户群体息息相关)</strong></p>
+<ul>
+<li><p>Lottie支持API 16及以上版本(也就是Android版本至少得是4.1 Jelly Bean糖豆)</p>
+</li>
+<li><p>Lottie支持iOS 8+</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p><strong>了解支持的AE特性</strong></p>
+<p>这里有一个表,罗列了所有的支持情况  <strong><a href="http://airbnb.io/lottie/supported-features.html" target="_blank" rel="noopener">点击查看</a></strong><br>​</p>
+<p><strong>我大概总结下</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>基本的形状都支持.填充支持渐变,</p>
+</li>
+<li><p><strong>mask</strong> 大部分混合效果不支持(少用mask,影响性能)</p>
+</li>
+<li><p><strong>Mattes</strong> 用alpha matte就好(少用,影响性能)</p>
+</li>
+<li><p><strong>merge Path(合并路径)</strong> 也尽量避免使用,应用Android只支持4.4以上,iOS都不支持.</p>
+</li>
+<li>图层效果和效果等都几乎不支持哦</li>
+<li>文字最好在转动画前就转为形状(因为iOS不支持)</li>
+<li>表达式不支持</li>
+<li>预合成现在已经支持</li>
+<li>…</li>
+</ul>
+<h2 id="从AE开始"><a href="#从AE开始" class="headerlink" title="从AE开始"></a>从AE开始</h2><ol>
+<li>安装必备的工具</li>
+</ol>
+<ul>
+<li><p>After Effects(尽量选择17以后的版本)</p>
+</li>
+<li><p><a href="https://aescripts.com/bodymovin/" target="_blank" rel="noopener">原版Bodymovin</a>(如何安装插件网上已经很多,只是老版本AE和新版AE安装方式有些区别,这个插件价格你自己定,填0就是免费!!!),这里同时有个汉化版本的<a href="https://github.com/bigxixi/bodymovin_cn" target="_blank" rel="noopener">汉化版Bodymovin</a></p>
+</li>
+<li><p>下载 Lottiefiles preview app(这个Android版本的app功能要更强大一些)</p>
+</li>
+</ul>
+<ol start="2">
+<li><p>安装bodymovin插件,插件下载地址已经在上面提到了,选择哪个版本看你,我一般都选新的. 下载下来格式是后缀为.zxp的文件,这里我们需要安装一个Adobe官方的插件管理工具 <strong><a href="https://aescripts.com/learn/zxp-installer/" target="_blank" rel="noopener">ZXP Installer</a></strong> 进行安装, 这个很简单,但是不知道我安装后无法识别到我电脑上的ae软件.</p>
+<blockquote>
+<p>这里提供第二种安装方式, 这是我在他们页面FAQ中发现的方法,英文好的直接移步这里<a href="https://aescripts.com/knowledgebase/index/view/faq/zxp-installer-faq/" target="_blank" rel="noopener">如何安装zxp格式的插件</a></p>
+<p><strong>Mac OS上安装</strong></p>
+<ol>
+<li>将.zxp文件重命名为.zip</li>
+<li>解压缩zip文件</li>
+<li>在Finder(访达)中 使用快捷键 <strong>⌘+shift+G</strong>,输入 <code>~/Library/Application Support/Adobe/CEP/extensions</code> 到达相应文件夹</li>
+<li>将刚刚的解压的文件移入这个文件夹</li>
+<li>打开终端, 输入命令 defaults write com.adobe.CSXS.5 PlayerDebugMode 1 (这个命令安装我们这个插件不需要输入都可以)</li>
+</ol>
+<p><strong>Windows上安装</strong></p>
+<ol>
+<li>将.zxp文件重命名为.zip</li>
+<li>解压缩zip文件</li>
+<li>将解压文件夹拖入 <code>C:/Program Files(x86)/Common Files/Adob​​e/CEP/extensions/</code></li>
+<li>在<code>HKEY_CURRENT_USER/Software/Adob​​e/CSXS.5</code>中创建一个注册表项“PlayerDebugMode”，其字符串值为1（要创建和修改注册表项，您可以在Windows菜单中搜索“regedit”程序）</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<ol start="3">
+<li><p>这个是我制作的一个AE动画 <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fqopymp6xlj31kw0zb47a.jpg" alt="jpg"></p>
+<blockquote>
+<p>可以看到我基本是用的AE的五大属性(位置,缩放,旋转,透明度,锚点)以及修剪路径,和路径做的动画,因为我看了Lottie的文档知道这样去做最为安全</p>
+</blockquote>
+</li>
+</ol>
+<ol start="4">
+<li><p>表达式转为关键帧</p>
+<blockquote>
+<p>刚刚截图也发现,我有用表达式. Lottie本身不支持表达式的. 但是一些微动效果(比如抖动这类),我们用表达式做出来更方便,效果更好.这里有个插件能将表达式烘焙转为关键帧,那么也就解决我们的问题了</p>
+</blockquote>
+<p>下载表达式烘焙插件 <strong><a href="https://c4dsky.com/21244.html" target="_blank" rel="noopener">Easy Bak</a></strong></p>
+<p>将下载文件夹中的<code>Easy Bake.jsxbin</code>文件移入<code>/Applications/Adobe After Effects CC 2018/Scripts/ScriptUI Panels</code>中,然后打开AE-首选项-常规-允许脚本写入文件和访问网络.这样你的插件才可以正常工作.  <img src="https://ws3.sinaimg.cn/large/006tNc79ly1fqp4fnw2unj31hg16m7fm.jpg" alt=""></p>
+<p>安装的插件会出现在红色的位置</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fqp4kjrz9jj31kw181dx0.jpg" alt=""></p>
+<p>打开你的AE文件中的合成, 点击Bake(其它不用调节), 完成可以看到,所以表达式都被关闭,替代他们的是排列紧密的关键帧.关键这个插件还可以Unbake,点击就可还原表达式,屌不屌!!!</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fqoqaovt3oj30ce0n00ua.jpg" alt="jpg"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fqoqgo492qj31kw0zb17m.jpg" alt="jpg"></p>
+</li>
+<li><p>导出Lottie需要的json文件</p>
+<blockquote>
+<p>这里我们的动画部分都基本完成了, 整个动画是图标变换</p>
+</blockquote>
+<p> 这里需要使用到第二个工具 <strong>bodymovin</strong>,这里我用汉化版(前面有提到下载地址)来说明:</p>
+<p> <img src="https://ws3.sinaimg.cn/large/006tNc79ly1fqouupgrnwj313g0tmacr.jpg" alt="jpg"></p>
+<p> 选择要导出的合成,进入设置</p>
+<p> <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fqouw0wz2jj313g0wkq8t.jpg" alt="jpg"></p>
+<p> 这个汉化版已经说明了每个选项的作用了, 按照我之前听过一个大佬说过,软件如果有默认选项,那么选默认总是没错的. 这里我们之间选择默认的第二个,其它只是特殊需求情况下需要改选的.</p>
+<p> 点击渲染, 这里我保存在桌面, 出现了一个后缀.json的文件</p>
+<p> <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fqov6ml5uyj313g0wkack.jpg" alt="jpg"></p>
+<p> 不要关闭软件,我们先预览看看,依旧使用这个插件,旁边的 <strong>预览按钮</strong></p>
+<p> <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fqovajx8paj313g0wkwgq.jpg" alt="jpg"></p>
+<p> 拖动下面的按钮,查看真个帧率下,显示是否正常.</p>
+<p> 最好利用官网的预览功能再次查看(因为涉及到平台,你得在iOS和Android下查看),打开<a href="https://www.lottiefiles.com/" target="_blank" rel="noopener">Lottiefile</a> 进行预览</p>
+<p> <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fqovvadymyj31kw1664qq.jpg" alt=""></p>
+<p> <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fqovvtc96aj31kw16649m.jpg" alt=""></p>
+<p> <img src="http://ww1.sinaimg.cn/large/88fb4a6cly1fqovtt5dppg20m80g1h4p.gif" alt=""></p>
+<p> 之后用你的手机,扫描右边的二维码进行预览(商店搜索Lottie Preview,分别用Android和iOS进行测试),如果动画有问题,继续回去看看AE用了什么不支持的属性,然后调整输出,重新导出,再次检测.</p>
+<p> 到这里,整个Lottie的动画导出就结束了. 下面来点更进阶的东西.</p>
+</li>
+</ol>
+<h2 id="用Lottie配合Framer制作可交互原型"><a href="#用Lottie配合Framer制作可交互原型" class="headerlink" title="用Lottie配合Framer制作可交互原型"></a>用Lottie配合Framer制作可交互原型</h2><blockquote>
+<p>话说设计师,应该做到更完美. 那么我们就针对当前的动画来做一个可交互的引导页原型; 这部分比较难了哦,需要有一定代码基础,因为我使用的动效原型工具是 <strong><a href="https://framer.com/" target="_blank" rel="noopener">framer</a></strong>, 因为他可实现最为接近原生的交互效果, 支持多台预览, 我在试用了大量市面上的交互软件后,决定使用它(然后就是AE和principle这三款,其余一概不碰)</p>
+</blockquote>
+<p>  <img src="https://ws1.sinaimg.cn/large/88fb4a6cly1fqp3fwx5cpg20m80go1kx.gif" alt=""></p>
+<ol>
+<li><p>准备</p>
+<ul>
+<li><p>coffeescript基础知识</p>
+</li>
+<li><p>github基础使用知识</p>
+</li>
+<li><p>Framer软件(越新越好,我使用的版本为V116)</p>
+</li>
+<li><p>动画json文件</p>
+</li>
+</ul>
+</li>
+<li><p>创建framer的设计稿件<a href="https://github.com/72/lottie-framer" target="_blank" rel="noopener">modules</a></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fqowdb024kj31dk0uwwi3.jpg" alt=""><br>直接 ⌘ + 2 切换到Code模式</p>
+<blockquote>
+<p>首先思考一下,我要制作的引导页(国外叫onboarding)原型,大概有3个页面的切换,每一个页面有一个大</p>
+</blockquote>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="l5ee.com/2018/05/09/你们都在讨论Google I:O的人工智能, 我却发现了这个/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l5ee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="l5ee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/09/你们都在讨论Google I:O的人工智能, 我却发现了这个/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-09T15:48:30+08:00">
+                2018-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计/" itemprop="url" rel="index">
+                    <span itemprop="name">设计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="你们都在讨论Google-I-O的人工智能-我却发现了这个"><a href="#你们都在讨论Google-I-O的人工智能-我却发现了这个" class="headerlink" title="你们都在讨论Google I/O的人工智能, 我却发现了这个"></a>你们都在讨论Google I/O的人工智能, 我却发现了这个</h2><blockquote>
+<p>今日(5月9日)凌晨, 一年一度的 Google I/O 开发者大会在美国旧金山如期开幕. Google 带来了人工智能以及机器学习方面的最小成果. 还有对于设计师们期待的Android P.</p>
+</blockquote>
+<p>怀着好奇,我打开了 Google Desin 的官网. 作为设计师, 我们当然期待的是全新的设计语言 <strong>Material Design 2.0</strong></p>
+<p>网站确实更新了, 待大会结束, 我们会整理一下2.0带来的新设计, 但是这次主要说说我在 Google Desin 发现了一个新工具. </p>
+<h2 id="Material-主题编辑器-Material-Theme-Editor"><a href="#Material-主题编辑器-Material-Theme-Editor" class="headerlink" title="Material 主题编辑器(Material Theme Editor)"></a>Material 主题编辑器(Material Theme Editor)</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fr55njchxeg30m80jp4qr.gif" alt=""></p>
+<blockquote>
+<p>这是一个基于Material Design 2.0 的 Sketch 插件(需要macOS High Sierra（10.13）或更高版本), 通过这个插件可以更高效的完成Material Design 风格的设计.</p>
+</blockquote>
+<h5 id="自定义Material的主题颜色"><a href="#自定义Material的主题颜色" class="headerlink" title="自定义Material的主题颜色"></a>自定义Material的主题颜色</h5><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fr55qjlj7qg30m80jp4qr.gif" alt=""></p>
+<ul>
+<li>通过选择主要，次要，背景以及文本和图标色彩，自动将颜色应用于所有组件</li>
+<li>检查色彩对比以符合无障碍要求</li>
+<li>从材质调色板中选择颜色</li>
+</ul>
+<h5 id="设置形状"><a href="#设置形状" class="headerlink" title="设置形状"></a>设置形状</h5><p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fr55utr72vg30m80jpb29.gif" alt=""></p>
+<ul>
+<li>选择你的形状和圆角风格</li>
+<li>从弯曲或切割的角落样式中进行选择，并自动将更改应用于您的材质组件</li>
+<li>在材质库中的组件中使用对称和非对称形状进行播放 - 同时保留在材质设计指南中</li>
+</ul>
+<h5 id="定义字体"><a href="#定义字体" class="headerlink" title="定义字体"></a>定义字体</h5><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fr565vyfb6g30m80jpu12.gif" alt=""></p>
+<ul>
+<li>最多可为你的主题添加3种类型的字体</li>
+<li>基于 Material 版式, 自动调整和优化字体的可读性</li>
+<li>可快速访问选择 Google 的字体, 包括：Roboto，Raleway，Alegreya，Merriweather，Rubik，Oswald 等</li>
+</ul>
+<h5 id="设置图标"><a href="#设置图标" class="headerlink" title="设置图标"></a>设置图标</h5><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fr5671klh1g30m80jp4qp.gif" alt=""></p>
+<ul>
+<li>通过风格化的系统图标表达您的品牌 - 提供五种主题和一系列格式，尺寸和密度</li>
+<li>从填充，圆润，锐利，轮廓和双色图标主题中进行选择</li>
+</ul>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fr5694x0h8g30m80jphdt.gif" alt=""></p>
+<ol>
+<li><p>下载安装插件(公众号回复 <strong>Material插件</strong> 获得链接)</p>
+</li>
+<li><p>新建 Sketch 文档, 打开插件选择主题, 插件一共提供了5种主题</p>
+</li>
+<li><p>修改颜色, 修改形状等, 尽情体会全新的设计吧!</p>
+</li>
+</ol>
+<blockquote>
+<p>温馨提示: 插件固然强大, 更多的是让我们去理解一个设计系统. 希望大家在使用的同时, 思考设计的初衷, 切勿沦为打工机器</p>
+</blockquote>
+<p>更多设计干货与资讯, 尽在海华社Hiwow, 不关注血亏!!!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="l5ee.com/2018/04/24/我的设计工作流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l5ee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="l5ee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/24/我的设计工作流/" itemprop="url">我的设计工作流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T22:02:43+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>这个主要说一下我是如何开展设计工作和管理设计相关文件的,当然你可能有更好的方式,欢迎提出来交流,不喜勿喷…</p>
+</blockquote>
+<h3 id="素材哪里找"><a href="#素材哪里找" class="headerlink" title="素材哪里找"></a><strong>素材哪里找</strong></h3><blockquote>
+<p>部分网站需要科学上网</p>
+</blockquote>
+<ul>
+<li><p><strong>图片类</strong>免费途径(无版权)</p>
+<ol>
+<li><p><a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a>: 不用说,高大上图片,质量又高,尺寸又大, 还提供API</p>
+</li>
+<li><p><a href="https://www.pexels.com/" target="_blank" rel="noopener">pexels</a>: 不多说</p>
+</li>
+<li><p><a href="https://pixabay.com/" target="_blank" rel="noopener">pixabay</a>: 不多说</p>
+</li>
+<li><p><a href="https://photos.icons8.com/" target="_blank" rel="noopener">moose</a>: 这个主要背景简单,适合做素材,小清新的风格</p>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>什么Pinterest,dribbble和behance都不用多说了,那多数都是盗图,当然个人练习还是可以用用的</p>
+</blockquote>
+<ul>
+<li><strong>图标 UI类</strong><ol>
+<li><a href="https://icons8.com" target="_blank" rel="noopener">icons8</a>: 69,300 Free Flat Icons</li>
+<li><a href="https://ui8.net" target="_blank" rel="noopener">UI8</a>: 大量付费素材, mockup, Kit和图标, 某宝很容易获取</li>
+<li><a href="http://freebiesjedi.com/?utm_source=next.36kr.com" target="_blank" rel="noopener">freebiesjedi</a>: 免费的模板, PSD 源文件内容</li>
+<li><a href="https://www.sketchappsources.com" target="_blank" rel="noopener">Sketh App Source</a>: 话说3年多前刚刚接触 sketch 就是在这上面获得大量素材</li>
+</ol>
+</li>
+</ul>
+<h3 id="如何管理-icon"><a href="#如何管理-icon" class="headerlink" title="如何管理 icon"></a>如何管理 icon</h3><blockquote>
+<p>这里主要是在 Mac 下的一套工作流程</p>
+</blockquote>
+<p>有一个自己的的 icon 素材库能让我们节省很多时间.  同时, 我们可以很快的将 UI 的框架搭建起来,而不是其抠细节.</p>
+<p>这里我用到一个软件.</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqyiyup7dwj31kw12pai6.jpg" alt=""></p>
+<p>这个软件很强大哦, 只需要吧你要保存的 icon拖入就行了, 而且整个软件将你收集的资源打包. 也就是你可以把这个打包文件放入任何同步盘(iCloud, 百度, Dropbox 等)中,就可以实现多设备管理资源.</p>
+<p>同时可导出你想要的多种格式的 icon 文件, 也支持打包分享, 怎么样, 可以制作自己的图标库, 简直完美!!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="l5ee.com/2018/04/24/如何导出高质量的Gif/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1269,301 +1888,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="l5ee.com/2016/01/06/过去的一年/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="l5ee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="l5ee">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/06/过去的一年/" itemprop="url">过去的一年</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-06T14:53:00+08:00">
-                2016-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这一年，我毕业了
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/01/06/过去的一年/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="l5ee.com/2015/11/21/设计的LOGO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="l5ee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="l5ee">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/21/设计的LOGO/" itemprop="url">我们来玩玩喽狗</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-21T13:27:00+08:00">
-                2015-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计/" itemprop="url" rel="index">
-                    <span itemprop="name">设计</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>有搭配英文字体，下方的文字，也没有考究。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/21/设计的LOGO/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1611,7 +1942,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1633,7 +1964,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
