@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Framer," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Framer教程系列 - 01初探Framer是什么 一个制作 iOS, Android 和 Web 应用的原型设计工具.">
+<meta name="keywords" content="Framer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-Framer教程-介绍">
+<meta property="og:url" content="l5ee.com/2018/05/11/2018-05-11 01-Framer教程-介绍/index.html">
+<meta property="og:site_name" content="l5ee">
+<meta property="og:description" content="Framer教程系列 - 01初探Framer是什么 一个制作 iOS, Android 和 Web 应用的原型设计工具.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1frc6clz06vg30m80ed7wh.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1frc5zqkp8wg30qo0f0b2j.gif">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1frc67mjw0jg30m80edath.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1frc694zv4dg30m80edb2c.gif">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1frc6d3jd4ag30m80ednph.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1frc6fusybnj30xc0m876i.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1frfaxu0dqng318g0zen83.gif">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1frfgfbivr5j30m80go3zk.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1frfb2d1twoj31kw12946r.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1frfbc75k8vj31kw10bqbn.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1frfitrcj4tj31kw138gwx.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1frfgboy6g5j31kw13zqf4.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1frfgcpj145j318g0xcwgw.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1frfgvhqh3hj30m80gomxe.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1frfh22wettj31kw141wt5.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1frfh5ujv3tj31kw141h0n.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1frfhc9znw0j30m80got9u.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1frfhsit97og318g0zead4.gif">
+<meta property="og:updated_time" content="2018-05-21T02:51:01.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01-Framer教程-介绍">
+<meta name="twitter:description" content="Framer教程系列 - 01初探Framer是什么 一个制作 iOS, Android 和 Web 应用的原型设计工具.">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1frc6clz06vg30m80ed7wh.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="l5ee.com/2018/05/11/2018-05-11 01-Framer教程-介绍/"/>
+
+
+
+
+
+  <title>01-Framer教程-介绍 | l5ee</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">l5ee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">保持一无所知的态度</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="l5ee.com/2018/05/11/2018-05-11 01-Framer教程-介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l5ee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="l5ee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">01-Framer教程-介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-11T13:32:50+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计/" itemprop="url" rel="index">
+                    <span itemprop="name">设计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Framer教程系列-01初探"><a href="#Framer教程系列-01初探" class="headerlink" title="Framer教程系列 - 01初探"></a>Framer教程系列 - 01初探</h1><h2 id="Framer是什么"><a href="#Framer是什么" class="headerlink" title="Framer是什么"></a>Framer是什么</h2><blockquote>
+<p>一个制作 iOS, Android 和 Web 应用的原型设计工具.</p>
+</blockquote>
+<a id="more"></a>
+<ol>
+<li>直接可制作UI界面,并且实现响应式布局</li>
+<li>高保真的原型, 最为接近真实的效果</li>
+<li>易于分享, 任何平台轻松查看</li>
+</ol>
+<h2 id="高保真原型的目的"><a href="#高保真原型的目的" class="headerlink" title="高保真原型的目的"></a>高保真原型的目的</h2><p>制作原型最重要的目的就是“沟通” ！近年来许多设计流程里，开始重视”原型制作”的重要性，例如设计思考中，就有特别将”原型制作”当成一个重要环节。透过这些原型，可让你进行最基础的想法验证，然后根据测试结果再来修正你的设计方向。这样的测试循环，可有效降低部分设计错误。</p>
+<p>要记住不要在原型投入太多精力. 完美不是原型的重点,而是如何透过它得到验证结果。</p>
+<h2 id="Framer-的编程语言（Coffee-Script）"><a href="#Framer-的编程语言（Coffee-Script）" class="headerlink" title="Framer 的编程语言（Coffee Script）"></a>Framer 的编程语言（Coffee Script）</h2><p>Framer整体是架构在JavaScript下。但我们所撰写的语言则是CoffeeScript，它属于高级语言的一种，因此它的程式码是非常接近口语。</p>
+<p>但以设计师的角度来看，会建议你不要从CoffeeScript下手来学习。先从理解Framer本身架构，以及它所提供的参数与Function入门比较妥当。</p>
+<ul>
+<li>Framer Doc：<a href="http://framerjs.com/docs/" target="_blank" rel="noopener">http://framerjs.com/docs/</a>  </li>
+<li><p>中文网(文档同步有一定延迟) <a href="http://www.framercn.com/docs" target="_blank" rel="noopener">http://www.framercn.com/docs</a></p>
+</li>
+<li><p>Coffee Script：<a href="http://coffeescript.org/" target="_blank" rel="noopener">http://coffeescript.org</a></p>
+</li>
+</ul>
+<h2 id="Framer的拓展能力"><a href="#Framer的拓展能力" class="headerlink" title="Framer的拓展能力"></a>Framer的拓展能力</h2><p>Framer 支持许多JavaScript 提供的服务， 比如可以接入地图MapBox等网页的第三方服务，让你的原型完整度更高； 当然支持VR原型。</p>
+<h4 id="原生交互感受"><a href="#原生交互感受" class="headerlink" title="原生交互感受"></a>原生交互感受</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1frc6clz06vg30m80ed7wh.gif" alt="framer_2_5408"></p>
+<h4 id="VR原型"><a href="#VR原型" class="headerlink" title="VR原型"></a>VR原型</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1frc5zqkp8wg30qo0f0b2j.gif" alt="VR原型"></p>
+<h4 id="数据折线原型"><a href="#数据折线原型" class="headerlink" title="数据折线原型"></a>数据折线原型</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1frc67mjw0jg30m80edath.gif" alt="framer4_5440"></p>
+<h4 id="3D交互原型"><a href="#3D交互原型" class="headerlink" title="3D交互原型"></a>3D交互原型</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1frc694zv4dg30m80edb2c.gif" alt="framer_5370"></p>
+<h4 id="游戏原型"><a href="#游戏原型" class="headerlink" title="游戏原型"></a>游戏原型</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1frc6d3jd4ag30m80ednph.gif" alt="Framer_2_5423"></p>
+<h2 id="Framer的分享"><a href="#Framer的分享" class="headerlink" title="Framer的分享"></a>Framer的分享</h2><p>Framer分享很方便，上传到Framer的云平台。通过链接可以发送给任何人，他们也可以通过手机或者电脑查看。同时，平台支持版本保存，方便你迭代对交互细节不断打磨。<strong>如果觉得Framer cloud太慢，可直接上传公司服务器，也可随时分享他人查看</strong></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1frc6fusybnj30xc0m876i.jpg" alt="Framer Cloud Dashboard"></p>
+<h2 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h2><blockquote>
+<p>光说不练假把式，只有亲自体验才能知道Framer的强大之处。Framer支持导入第三方sketch和Photoshop等软件的设计稿。在Framer90版本新增Design模式，也就是我们完全可以不使用第三方软件，只在framer完成设计图和一些高保真交互。（案例文件，末尾进行下载）</p>
+</blockquote>
+<p>这次暂时不会讲解如何导入第三方设计稿，本次只是让你初步体验到framer的强大，不要着急，罗马不是一日建成的。</p>
+<h4 id="我们来看看我们第一部分要做的效果"><a href="#我们来看看我们第一部分要做的效果" class="headerlink" title="我们来看看我们第一部分要做的效果"></a>我们来看看我们第一部分要做的效果</h4><p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1frfaxu0dqng318g0zen83.gif" alt=""></p>
+<p>Gif效果变慢了，移步这里体验 <a href="https://framer.cloud/pKxzY" target="_blank" rel="noopener">https://framer.cloud/pKxzY</a></p>
+<h2 id="Framer中制作Email图案"><a href="#Framer中制作Email图案" class="headerlink" title="Framer中制作Email图案"></a>Framer中制作Email图案</h2><p>切换到Framer的Design模式下，使用方式和sketch，XD等工具如出一辙。我们拆分下邮件结构。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1frfgfbivr5j30m80go3zk.jpg" alt=""></p>
+<p>邮件背面和邮件正面包裹我都添加了轻微的阴影，营造一种轻拟物的感觉。</p>
+<blockquote>
+<p><strong>注意</strong>，所有的形状都请包裹在framer的Frame中，因为这样你才能在Code界面下去控制他们的属性和制作动画（也就是需要一个容器去装这些元素）</p>
+</blockquote>
+<p>括号的英文就是包括的Frame的名称，我们来看看图层结构。整个email我用了一个大的Mail来包裹，CustomDevice就是作为深色的画板背景。effect图层是点击的水波纹效果，暂时不要管。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1frfb2d1twoj31kw12946r.jpg" alt=""></p>
+<p>然后，我们在需要做动画的图层右键添加<strong>Target</strong>，这样就可以在Code中去调用这些图层去控制它们啦。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1frfbc75k8vj31kw10bqbn.jpg" alt=""></p>
+<p>把mail，cover 都添加上<strong>Target</strong>。 然后我们切换到code模式下。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1frfitrcj4tj31kw138gwx.jpg" alt=""></p>
+<p>可以看到左边有我们刚刚Target的图层，它们都高亮显示，表示我们可以直接通过名称去控制它们。左下角的Docs是我们经常用的，可以快速去查看官方文档，当我们遇到问题，可以多阅读文档很多问题都能解决。</p>
+<p>右边就是预览效果窗口啦。 咦？ 为何我邮件是折叠状态呢，明明我们在Design模式下是打开的。</p>
+<p><strong>因为我添加了这段代码</strong></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1frfgboy6g5j31kw13zqf4.jpg" alt=""></p>
+<p>我们来逐一解释一下意思哦（开始Code咯，别害怕很简单的）</p>
+<p><code>cover.originY = 0</code></p>
+<p>cover就是我们之前画的邮件封口啦，我们通过名字去找到这个图层。然后带上一个小点，就是说我们要去控制cover的什么属性呢（就是图层的尺寸，位置，颜色等）。OriginY是什么呢？</p>
+<blockquote>
+<p>Origin就是指的图层的变换中心，比如我们进行缩放，旋转的时候的一个定位中心，OriginX就是横向中心，OriginY就是垂直中心，看下图</p>
+</blockquote>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1frfgcpj145j318g0xcwgw.jpg" alt="Artboard@2x"></p>
+<p>默认的变换中心是蓝色的（OrignX=0.5，OrignY=0.5）这里我们需要切换到红色（只需修改originY=0），也就是把cover向下翻折180度，变成关闭状态。</p>
+<p><code>cover.rotationX = -180</code></p>
+<p>然后以X轴旋转180度，因为是逆时针所以是负的。</p>
+<p>这个时候你会发现cover图层不见了，为什么呢？因为我们的空间是三维的，还有Z轴的存在，Framer的翻折之后图层产生了重叠（默认图层都在Z轴为o的位置）</p>
+<p><code>cover.z = 1</code></p>
+<p>把cover的z轴设定为1，那它就在其它图层的上面咯。</p>
+<p><code>mail.y = 0</code></p>
+<p>可以源文件mail的Frame和mail位置是不同的，mail的坐标是相对于mail的Frame的（可以连接买来的Frame就是承载mail的画板），这里把<code>mail.y = 0</code>就是讲mail的Y坐标以Frame的坐标重置，这样mail就装进了邮件中。</p>
+<h4 id="隐藏cover可以看到mail被装了进去"><a href="#隐藏cover可以看到mail被装了进去" class="headerlink" title="隐藏cover可以看到mail被装了进去"></a>隐藏cover可以看到mail被装了进去</h4><p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1frfgvhqh3hj30m80gomxe.jpg" alt=""></p>
+<p><code>Mail.x = Align.center</code><br><code>Mail.y = Align.center(-50)</code></p>
+<p>这两句代码很简单，Align.center就是相对屏幕居中的意思，这里设定就可以让Mail图标在你任何屏幕尺寸下居中，<code>Align.center(-50)</code>就是居中后，坐标值减50（因为我们的视觉中心基本都中间靠上，所以我设置垂直距离居中偏上，这都是细节！）</p>
+<h4 id="做到这里，我们的效果应该是这样子"><a href="#做到这里，我们的效果应该是这样子" class="headerlink" title="做到这里，我们的效果应该是这样子"></a>做到这里，我们的效果应该是这样子</h4><p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1frfh22wettj31kw141wt5.jpg" alt=""></p>
+<p>是不是觉得很难？开始接收陌生的事物都是这样子的，更重要的是去思考，发现内在规律和联系。</p>
+<p>本次最后一个知识点，我们添加点击事件，进行点击邮件切换为打开状态。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1frfh5ujv3tj31kw141h0n.jpg" alt=""></p>
+<p>添加代码：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mail.onTap -&gt;</span><br><span class="line">	cover.rotationX = <span class="number">0</span></span><br><span class="line">	cover.z = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><code>onTap</code>就是一个事件，加上 <code>-&gt;</code>。记得它们之间一定要带有空格，然后在下面写上事件执行的动作。下面我写的就是还原我们设计稿中的状态（即打开邮件的效果），记住写在事件里面的内容一定要换行。就像下面的代码被包裹在事件中一样。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1frfhc9znw0j30m80got9u.jpg" alt=""></p>
+<h4 id="完成上述代码后，我们可以看到"><a href="#完成上述代码后，我们可以看到" class="headerlink" title="完成上述代码后，我们可以看到"></a>完成上述代码后，我们可以看到</h4><p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1frfhsit97og318g0zead4.gif" alt=""></p>
+<p>附上到目前为止的课程文件：</p>
+<p><strong>链接:<a href="https://pan.baidu.com/s/15245oCRP0qSL5L5cd7O2Fg" target="_blank" rel="noopener">https://pan.baidu.com/s/15245oCRP0qSL5L5cd7O2Fg</a>  密码:w7zf</strong></p>
+<p>我们已经实现一个基本的效果了，剩下就是润色动画了，目前的知识点已经比较多了，考虑到大家的接受程度，动画部分将在下一期内容中进行。</p>
+<blockquote>
+<p>教程中肯定没有写到所有细节，我希望的是更多的自主探索的学习，当然小有伙伴有问题也可以加我微信，向我提问。也可留言提出建议，毕竟第一次写教程，我担心写得太难。。。</p>
+</blockquote>
+<h2 id="Framer教程系列目前是我的试水文章，如果看的人太少，很可能也会腰斩，如果喜欢，希望不要吝啬你的赞，给点鼓励"><a href="#Framer教程系列目前是我的试水文章，如果看的人太少，很可能也会腰斩，如果喜欢，希望不要吝啬你的赞，给点鼓励" class="headerlink" title="Framer教程系列目前是我的试水文章，如果看的人太少，很可能也会腰斩，如果喜欢，希望不要吝啬你的赞，给点鼓励"></a>Framer教程系列目前是我的试水文章，如果看的人太少，很可能也会腰斩，如果喜欢，希望不要吝啬你的赞，给点鼓励</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Framer/" rel="tag"># Framer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/09/2018-05-09你们都在讨论Google I:O的人工智能, 我却发现了这个/" rel="next" title="你们都在讨论Google I/O的人工智能, 我却发现了这个">
+                <i class="fa fa-chevron-left"></i> 你们都在讨论Google I/O的人工智能, 我却发现了这个
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/19/2018-05-19Higo for Mac/" rel="prev" title="Higo for Mac">
+                Higo for Mac <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="l5ee" />
+            
+              <p class="site-author-name" itemprop="name">l5ee</p>
+              <p class="site-description motion-element" itemprop="description">记录设计和生活</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/l5ee" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github-alt"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zcool.com.cn/u/2342161" target="_blank" title="Zcool">
+                      
+                        <i class="fa fa-fw fa-paint-brush"></i>Zcool</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://behance.net/l5ee" target="_blank" title="Behance">
+                      
+                        <i class="fa fa-fw fa-behance"></i>Behance</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://dribbble.com/l5ee" target="_blank" title="Dribbble">
+                      
+                        <i class="fa fa-fw fa-dribbble"></i>Dribbble</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Framer教程系列-01初探"><span class="nav-number">1.</span> <span class="nav-text">Framer教程系列 - 01初探</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Framer是什么"><span class="nav-number">1.1.</span> <span class="nav-text">Framer是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高保真原型的目的"><span class="nav-number">1.2.</span> <span class="nav-text">高保真原型的目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Framer-的编程语言（Coffee-Script）"><span class="nav-number">1.3.</span> <span class="nav-text">Framer 的编程语言（Coffee Script）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Framer的拓展能力"><span class="nav-number">1.4.</span> <span class="nav-text">Framer的拓展能力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原生交互感受"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">原生交互感受</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VR原型"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">VR原型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据折线原型"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">数据折线原型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3D交互原型"><span class="nav-number">1.4.0.4.</span> <span class="nav-text">3D交互原型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#游戏原型"><span class="nav-number">1.4.0.5.</span> <span class="nav-text">游戏原型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Framer的分享"><span class="nav-number">1.5.</span> <span class="nav-text">Framer的分享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小试牛刀"><span class="nav-number">1.6.</span> <span class="nav-text">小试牛刀</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#我们来看看我们第一部分要做的效果"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">我们来看看我们第一部分要做的效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Framer中制作Email图案"><span class="nav-number">1.7.</span> <span class="nav-text">Framer中制作Email图案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏cover可以看到mail被装了进去"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">隐藏cover可以看到mail被装了进去</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#做到这里，我们的效果应该是这样子"><span class="nav-number">1.7.0.2.</span> <span class="nav-text">做到这里，我们的效果应该是这样子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完成上述代码后，我们可以看到"><span class="nav-number">1.7.0.3.</span> <span class="nav-text">完成上述代码后，我们可以看到</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Framer教程系列目前是我的试水文章，如果看的人太少，很可能也会腰斩，如果喜欢，希望不要吝啬你的赞，给点鼓励"><span class="nav-number">1.8.</span> <span class="nav-text">Framer教程系列目前是我的试水文章，如果看的人太少，很可能也会腰斩，如果喜欢，希望不要吝啬你的赞，给点鼓励</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">l5ee</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
