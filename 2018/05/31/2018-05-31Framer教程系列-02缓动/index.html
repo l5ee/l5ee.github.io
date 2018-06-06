@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Framer," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Framer教程系列-02 灵动 上一章我们已经学习到如何在Framer绘制图形；编写基本代码定义邮件初始状态，以及使用点击事件创造邮件打开的效果，这期我们将学习如何润色动画，并且制作Google点击的水波纹效果。文末含课件与链接">
+<meta name="keywords" content="Framer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Framer教程系列 - 02缓动">
+<meta property="og:url" content="l5ee.com/2018/05/31/2018-05-31Framer教程系列-02缓动/index.html">
+<meta property="og:site_name" content="l5ee">
+<meta property="og:description" content="Framer教程系列-02 灵动 上一章我们已经学习到如何在Framer绘制图形；编写基本代码定义邮件初始状态，以及使用点击事件创造邮件打开的效果，这期我们将学习如何润色动画，并且制作Google点击的水波纹效果。文末含课件与链接">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1frfhsit97og318g0zead4.gif">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fs0gfrck32g30m80hpta0.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1fs0ghykc1nj31ig13y0za.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1fs0gk6iqnvj31ig13ydh3.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1fs16p1pzs4j31ig13yjsm.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1fs16slp0mij31ig13y761.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fs17dytunxg30m80hpdh3.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1fs17j9nvksj31kw129q4a.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fs17n5wzy9j31kw115n64.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fs17rmp7ifj31kw119tdg.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1fs17vr6li4j31kw11cdpt.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fs182dgrk4j31kw1197dq.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1fs185oo129g30m80hp76i.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1fs18cswvp3j31kw115qca.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1fs18f7lhp0g30m80hpwgw.gif">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fs18yb2humj31kw1197dv.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1fs19a9uxb0g30m80hpwlo.gif">
+<meta property="og:updated_time" content="2018-06-06T12:05:09.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Framer教程系列 - 02缓动">
+<meta name="twitter:description" content="Framer教程系列-02 灵动 上一章我们已经学习到如何在Framer绘制图形；编写基本代码定义邮件初始状态，以及使用点击事件创造邮件打开的效果，这期我们将学习如何润色动画，并且制作Google点击的水波纹效果。文末含课件与链接">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1frfhsit97og318g0zead4.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="l5ee.com/2018/05/31/2018-05-31Framer教程系列-02缓动/"/>
+
+
+
+
+
+  <title>Framer教程系列 - 02缓动 | l5ee</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">l5ee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">保持一无所知的态度</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="l5ee.com/2018/05/31/2018-05-31Framer教程系列-02缓动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="l5ee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="l5ee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Framer教程系列 - 02缓动</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T21:21:02+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计/" itemprop="url" rel="index">
+                    <span itemprop="name">设计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Framer教程系列-02-灵动"><a href="#Framer教程系列-02-灵动" class="headerlink" title="Framer教程系列-02 灵动"></a>Framer教程系列-02 灵动</h1><blockquote>
+<p>上一章我们已经学习到如何在Framer绘制图形；编写基本代码定义邮件初始状态，以及使用点击事件创造邮件打开的效果，这期我们将学习如何润色动画，并且制作Google点击的水波纹效果。文末含课件与链接</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="上期效果"><a href="#上期效果" class="headerlink" title="上期效果"></a>上期效果</h2><p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1frfhsit97og318g0zead4.gif" alt=""></p>
+<h2 id="添加动画"><a href="#添加动画" class="headerlink" title="添加动画"></a>添加动画</h2><p>这里我们将给cover增加一个动画让它解开的时候，更加自然。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mail.onTap -&gt;</span><br><span class="line">	cover.rotationX = <span class="number">0</span></span><br><span class="line">	cover.z = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>将上述代码进行一点变化。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Mail.onTap -&gt;</span><br><span class="line">	cover.animate</span><br><span class="line">		rotationX: <span class="number">0</span></span><br><span class="line">		z: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>我们可以看到，这里我再一次运用了<code>.</code>属性，这里用的是 <strong>cover</strong> 的 <code>animate</code>属性，同样注意缩进。然后将之前写的属性缩进到animate下，这个时候点击测试看看：<img src="https://ws2.sinaimg.cn/large/006tKfTcly1fs0gfrck32g30m80hpta0.gif" alt=""></p>
+<p><strong>顺滑了，有没有！！！</strong>这是因为我们给这个变化添加了动画。</p>
+<p>如果我们需要更加细腻的调节动画改怎么去做呢？</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fs0ghykc1nj31ig13y0za.jpg" alt="image-20180605180044884"></p>
+<p>点击红色箭头的位置，我们可以切换到详细的动画曲线去调节哦，按照箭头点击切换到动画属性面板。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1fs0gk6iqnvj31ig13ydh3.jpg" alt="image-20180605180254159"></p>
+<p>这个就不用我细说了吧，Curve就是动画曲线，你可以选择6种哦，下方就是动画时间啊，延迟和重复次数，多多尝试你会感受到区别哦，每当你调节了这个面板，左边会相应生成对应的代码，所以你熟悉后完全可以自己去写。</p>
+<p>也可以切换的左边的属性面板，直接添加动画的属性哦。<img src="https://ws4.sinaimg.cn/large/006tKfTcly1fs16p1pzs4j31ig13yjsm.jpg" alt=""></p>
+<p>动画添加就这么简单，我们同时把信件上移的动画一起添加上去，如下<img src="https://ws4.sinaimg.cn/large/006tKfTcly1fs16slp0mij31ig13y761.jpg" alt=""></p>
+<p>这里用到的新的动画曲线 <code>Spring</code>，这里有一个弹簧效果的曲线，我希望邮件弹出的时候带一点轻微的回弹。<code>(damping: 0.5,mass: 0.8)</code> 是动画曲线的阻尼系数和质量。阻尼系数越大弹力的效果就越弱。质量的话越小你会感觉得物体回弹的就越慢（一般不会去调节质量，这里我想模拟一点纸的效果所以把质量调小了一点）。要真正理解这些属性，你需要自己多自行尝试不同的参数，你才会体会到不同。</p>
+<p><code>Delay: 1</code> 也就是让动画延迟一秒触发，也就是先执行了邮件cover打开的动画，然后紧接着执行邮件上移动画。<code>time: 0.9</code> 然后设置了动画时间 0.9 秒（未设置的默认动画时间都是1s，默认动画曲线是ease）</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fs17dytunxg30m80hpdh3.gif" alt=""></p>
+<h2 id="添加水波纹效果"><a href="#添加水波纹效果" class="headerlink" title="添加水波纹效果"></a>添加水波纹效果</h2><p>我们已经完成了动画效果，你也可以添加更多的效果，比如点击邮件阴影变长，让邮件有被抬起的感觉等。。</p>
+<p>接下来我们开始做添加点的水波纹效果。</p>
+<p>还记得之前我们在Design界面还有一个Frame没有说明吗，就是这个</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fs17j9nvksj31kw129q4a.jpg" alt=""></p>
+<p>这个effect，其实就是一个我们画的圆</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fs17n5wzy9j31kw115n64.jpg" alt="image-20180606093954514"></p>
+<p>这里的这里的<strong>effect名称的frame</strong>就是图层上蓝色的矩形（注意effect的大小和位置要和邮件矩形大小一致），然后里面包裹着一个白色圆形的<strong>highlight图层</strong>，画好之后，我们需要将 <strong>highlight 的透明度（在右边的属性栏的Opacity）调整为0</strong>，然后<strong>右键 effect，把 Clip 打开</strong>。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fs17rmp7ifj31kw119tdg.jpg" alt="image-20180606094413091"></p>
+<p>这样之后的效果，一定要按照上面的要求去做，然后把他们都开启 target（不懂看第一篇教程初探）。我们将在 Code 界面去开启 highlight 图层。</p>
+<p>切换到 Code 界面，添加如下代码</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">highlight.opacity = <span class="number">1</span></span><br><span class="line">highlight.scale = <span class="number">0</span></span><br><span class="line">effect.z = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1fs17vr6li4j31kw11cdpt.jpg" alt="image-20180606094810928"></p>
+<p>我们先将highlight的透明度还原为 1， 然后将它的大小设置为0 ，因为水波纹的效果是一个放大同时透明度跟着变为0的动画，所以我们进行了初始设定。最后把 Z 放置在顶层（设置为2，因为cover为1）</p>
+<p>接下来肯定很简单哦，在点击事件中加入highlight的动画就行咯</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">highlight.animate</span><br><span class="line">	scale: <span class="number">1</span></span><br><span class="line">	opacity: <span class="number">0</span></span><br><span class="line">	options: </span><br><span class="line">		time: <span class="number">0.6</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fs182dgrk4j31kw1197dq.jpg" alt="image-20180606095432761"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1fs185oo129g30m80hp76i.gif" alt=""></p>
+<p>卧槽！厉害吧，我们已经完成了效果。不过一个好的动画可不是这样，这里还有些细节需要我们去修订。首先应该是点击产生水波纹后邮件开始变化，而不是点击里面同时开始动画；其次水波纹现在是以邮件中心扩散，而不是我们点击的那个位置。</p>
+<p>我们来给三个动画设置相应的延迟，达到按照顺序播放。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fs18cswvp3j31kw115qca.jpg" alt="image-20180606100434385"></p>
+<p>这里，我相应让 <strong>cover 和 mail，延迟了些时间</strong> （顺便给cover换了一下动画曲线，个人感觉默认没有Spring舒服）</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1fs18f7lhp0g30m80hpwgw.gif" alt=""></p>
+<p>这样的效果是不是好很多，😆。然后就是让波纹在鼠标点击的位置出现咯。其实非常的简单一行代码搞定。。。</p>
+<p>在点击事件中添加这行代码</p>
+<p><code>highlight.midPoint = event.point</code> </p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fs18yb2humj31kw1197dv.jpg" alt="image-20180606102513579"></p>
+<p>这里的<code>highlight.midPoint</code>就是圆形波纹的中心点坐标，我们去让它等于 点击事件的坐标 <code>event.point</code></p>
+<p>这样就是点击哪里，波纹就相应的出现了。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fs19a9uxb0g30m80hpwlo.gif" alt=""></p>
+<p>做到这里，是不是有满满的成就感，同时可能还在云里雾里。教程不可能十分详尽，所以更多的时候你需要去查看官方文档进行摸索学习。你需要去通读一下官方文档，这样你要做什么动画或者控制相应属性才能有个大概思路，然后遇到问题，快速检索到文档提及的部分，这样才可以提高。</p>
+<p><strong>官方英文文档</strong><a href="https://framer.com/docs" target="_blank" rel="noopener">https://framer.com/docs</a> （以官方为准）</p>
+<p><strong>中文文档</strong> <a href="http://www.framercn.com/docs" target="_blank" rel="noopener">http://www.framercn.com/docs</a> （翻译有一定滞后）</p>
+<p><strong>课件</strong> 链接:<a href="https://pan.baidu.com/s/1TumqEq9U9y8EGWqI79zXAA" target="_blank" rel="noopener">https://pan.baidu.com/s/1TumqEq9U9y8EGWqI79zXAA</a>  密码:g0v3</p>
+<blockquote>
+<p>下一期，我将回归到基础，我们从图层一步一步讲起，同时提及一些代码基础，让没有基础的同学可以比较好的上手</p>
+</blockquote>
+<p>#### </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Framer/" rel="tag"># Framer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/31/2018-05-31AE的30个高效快捷键/" rel="next" title="AE的30个高效快捷键">
+                <i class="fa fa-chevron-left"></i> AE的30个高效快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="l5ee" />
+            
+              <p class="site-author-name" itemprop="name">l5ee</p>
+              <p class="site-description motion-element" itemprop="description">记录设计和生活</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/l5ee" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github-alt"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zcool.com.cn/u/2342161" target="_blank" title="Zcool">
+                      
+                        <i class="fa fa-fw fa-paint-brush"></i>Zcool</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://behance.net/l5ee" target="_blank" title="Behance">
+                      
+                        <i class="fa fa-fw fa-behance"></i>Behance</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://dribbble.com/l5ee" target="_blank" title="Dribbble">
+                      
+                        <i class="fa fa-fw fa-dribbble"></i>Dribbble</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Framer教程系列-02-灵动"><span class="nav-number">1.</span> <span class="nav-text">Framer教程系列-02 灵动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#上期效果"><span class="nav-number">1.1.</span> <span class="nav-text">上期效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加动画"><span class="nav-number">1.2.</span> <span class="nav-text">添加动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加水波纹效果"><span class="nav-number">1.3.</span> <span class="nav-text">添加水波纹效果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">l5ee</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
